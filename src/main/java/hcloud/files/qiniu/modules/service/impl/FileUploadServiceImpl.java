@@ -23,5 +23,5 @@ public class FileUploadServiceImpl implements FileUploadService{
         String upToken = auth.uploadToken(bucket, key);
         System.out.println(upToken);
     }
- 
+
 }
