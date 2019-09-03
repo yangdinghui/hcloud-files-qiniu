@@ -17,14 +17,14 @@ public class FilesQiniuAccount {
     /**
      * 七牛云RAM用户 KeyID
      */
-    @Column(name = "accesskeyid")
-    private String accesskeyid;
+    @Column(name = "accesskey")
+    private String accesskey;
 
     /**
      * 七牛云RAM用户 KeySecret
      */
-    @Column(name = "accesskeysecret")
-    private String accesskeysecret;
+    @Column(name = "secretkey")
+    private String secretkey;
 
     /**
      * 七牛云公网endpoint
