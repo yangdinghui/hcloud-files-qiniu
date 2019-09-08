@@ -1,6 +1,7 @@
 package hcloud.files.qiniu.modules.service.impl;
 
 import com.qiniu.util.Auth;
+import hcloud.files.qiniu.base.excetion.BusinessException;
 import hcloud.files.qiniu.modules.dao.FilesQiniuAccountDao;
 import hcloud.files.qiniu.modules.model.dto.QiNiuAccountDto;
 import hcloud.files.qiniu.modules.model.entity.FilesQiniuAccount;
@@ -32,8 +33,9 @@ public class FileUploadServiceImpl implements FileUploadService {
             FilesQiniuAccount account = accountList.get(0);
             accountDto = new QiNiuAccountDto();
             BeanUtils.copyProperties(account, accountDto);
+        } else {
+            throw new BusinessException(201, "未查找到账户配置");
         }
-
 
         String accessKey = accountDto.getAccesskey();
         String secretKey = accountDto.getSecretkey();
