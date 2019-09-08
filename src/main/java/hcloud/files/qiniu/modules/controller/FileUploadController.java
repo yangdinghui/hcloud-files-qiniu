@@ -1,5 +1,7 @@
 package hcloud.files.qiniu.modules.controller;
 
+import hcloud.files.qiniu.modules.service.FileUploadService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @author 杨丁辉
  */
 @RestController
-@RequestMapping(value = "/",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class Controller {
+@RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+public class FileUploadController {
+    @Autowired
+    private FileUploadService fileUploadService;
 
     @GetMapping(value = "/upload")
-    public String upload(){
-
+    public String upload() {
+        fileUploadService.upload();
         return "files";
     }
 
