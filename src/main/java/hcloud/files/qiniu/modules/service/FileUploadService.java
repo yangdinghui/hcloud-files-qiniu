@@ -1,5 +1,9 @@
 package hcloud.files.qiniu.modules.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+
 /**
  * description 描述这个类的主要功能、用途
  * 创建时间 2019/9/3
@@ -8,6 +12,6 @@ package hcloud.files.qiniu.modules.service;
  */
 public interface FileUploadService {
 
-    void upload();
+    void upload(MultipartFile file) throws IOException;
 
 }
