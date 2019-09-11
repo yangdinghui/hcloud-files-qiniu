@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -63,6 +64,8 @@ public class FileUploadServiceImpl implements FileUploadService {
         Configuration cfg = new Configuration(Region.huanan());
         UploadManager uploadManager = new UploadManager(cfg);
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM");
+        String formatDate = dateFormat.format(new Date());
 
         InputStream inputStream = file.getInputStream();
         ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
@@ -73,7 +76,7 @@ public class FileUploadServiceImpl implements FileUploadService {
         }
         byte[] uploadBytes = swapStream.toByteArray();
         try {
-            Response response = uploadManager.put(uploadBytes, fileName, upToken);
+            Response response = uploadManager.put(uploadBytes, formatDate + "/" + fileName, upToken);
             DefaultPutRet defaultPutRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
             String key = defaultPutRet.key;
             System.out.println(key);
@@ -82,6 +85,11 @@ public class FileUploadServiceImpl implements FileUploadService {
         }
 
 
+    }
+
+    public static void main(String[] args) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM");
+        System.out.println(dateFormat.format(new Date()));
     }
 
 }
