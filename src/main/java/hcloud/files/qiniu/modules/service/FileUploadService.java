@@ -12,6 +12,6 @@ import java.io.IOException;
  */
 public interface FileUploadService {
 
-    void upload(MultipartFile file) throws IOException;
+    String upload(MultipartFile file) throws IOException;
 
 }

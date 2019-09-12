@@ -33,8 +33,8 @@ public class FileUploadController {
         if(file.isEmpty()){
             return ApiResponse.fail(201,"文件为空");
         }
-        fileUploadService.upload(file);
+        String upload = fileUploadService.upload(file);
         System.out.println(file);
-        return null;
+        return ApiResponse.success(upload);
     }
 }

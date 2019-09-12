@@ -40,7 +40,8 @@ public class FileUploadServiceImpl implements FileUploadService {
     private FilesQiniuAccountDao filesQiniuAccountDao;
 
     @Override
-    public void upload(MultipartFile file) throws IOException {
+    public String upload(MultipartFile file) throws IOException {
+        String obj = "";
         List<FilesQiniuAccount> accountList = filesQiniuAccountDao.selectAll();
         QiNiuAccountDto accountDto = null;
         if (!CollectionUtils.isEmpty(accountList)) {
@@ -78,18 +79,13 @@ public class FileUploadServiceImpl implements FileUploadService {
         try {
             Response response = uploadManager.put(uploadBytes, formatDate + "/" + fileName, upToken);
             DefaultPutRet defaultPutRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
-            String key = defaultPutRet.key;
-            System.out.println(key);
+            obj = defaultPutRet.key;
+            System.out.println(obj);
+            return obj;
         } catch (QiniuException e) {
             e.printStackTrace();
         }
-
-
-    }
-
-    public static void main(String[] args) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM");
-        System.out.println(dateFormat.format(new Date()));
+        return obj;
     }
 
 }
