@@ -1,4 +1,31 @@
+server:
+  port: 8683
+  servlet:
+    context-path: /files
+
 spring:
   profiles:
     active: dev
+  datasource:
+    username:  root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/hancloud_pf_web?useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#&serverTimezone=UTC
 
+#扫描映射文件
+#mybatis:
+#  mapper-locations: classpath*:mapper/**/*.xml
+
+#swagger开发文档配置
+swagger2:
+  enable: true
+  basePackage: hcloud.files.qiniu
+  title: 七牛云对象存储API开发文档
+  desc:
+  termsOfServiceUrl: hcloud.files.qiniu
+  version: 1.0
+
+logging:
+  level:
+   com.jscloud: debug

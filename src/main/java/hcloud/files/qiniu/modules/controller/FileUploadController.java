@@ -29,7 +29,7 @@ public class FileUploadController {
     }
 
     @PostMapping("/upload")
-    public ApiResponse<String> upload(@RequestParam  MultipartFile file, HttpServletRequest request) throws IOException {
+    public ApiResponse<String> upload(@RequestParam("file")  MultipartFile file, HttpServletRequest request) throws IOException {
         if(file.isEmpty()){
             return ApiResponse.fail(201,"文件为空");
         }

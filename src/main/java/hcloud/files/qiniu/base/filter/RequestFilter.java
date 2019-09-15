@@ -1,6 +1,5 @@
 package hcloud.files.qiniu.base.filter;
 
-import hcloud.files.qiniu.base.handler.RequestReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -9,7 +8,6 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.logging.LogRecord;
 
 /**
  * description 描述这个类的主要功能、用途
@@ -26,6 +24,7 @@ public class RequestFilter implements Filter {
 
 
     public void init(FilterConfig filterConfig) throws ServletException {
+        log.info("RequestFilter...");
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
