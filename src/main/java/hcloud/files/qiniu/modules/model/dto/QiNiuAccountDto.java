@@ -18,10 +18,10 @@ public class QiNiuAccountDto {
     private String bucketname;
 
     @ApiModelProperty("七牛云RAM用户 KeyID")
-    private String accesskey;
+    private String accesskeyid;
 
     @ApiModelProperty("七牛云RAM用户 KeySecret")
-    private String secretkey;
+    private String accesskeysecret;
 
     @ApiModelProperty("七牛云公网endpoint")
     private String wanendpoint;

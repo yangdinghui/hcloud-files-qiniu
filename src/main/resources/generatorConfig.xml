@@ -34,7 +34,7 @@
             <!--<property name="trimStrings" value="true"/>-->
         </javaModelGenerator>
 
-        <table tableName="files_qiniu_account">
+        <table tableName="fs_qiniu_account">
             <property name="useActualColumnNames" value="true"/>
         </table>
     </context>

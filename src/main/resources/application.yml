@@ -9,9 +9,10 @@ spring:
   datasource:
     username:  root
     password: 123456
-    url: jdbc:mysql://localhost:3306/hancloud_pf_web?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/han_platform?useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
-#&serverTimezone=UTC
+#hancloud_pf_web
+#&serverTimezone=UTC或者在数据库执行set global time_zone = '+8:00';
 
 #扫描映射文件
 #mybatis:

@@ -1,6 +1,6 @@
 package hcloud.files.qiniu.modules.dao;
 
-import hcloud.files.qiniu.modules.model.entity.FilesQiniuAccount;
+import hcloud.files.qiniu.modules.model.entity.FsQiniuAccount;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.BaseMapper;
 
@@ -11,5 +11,5 @@ import tk.mybatis.mapper.common.BaseMapper;
  * @author 杨丁辉
  */
 @Repository
-public interface FilesQiniuAccountDao extends BaseMapper<FilesQiniuAccount> {
+public interface FilesQiniuAccountDao extends BaseMapper<FsQiniuAccount> {
 }

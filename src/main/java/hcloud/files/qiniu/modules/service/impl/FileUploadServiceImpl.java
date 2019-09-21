@@ -13,6 +13,7 @@ import hcloud.files.qiniu.base.utils.DateUtil;
 import hcloud.files.qiniu.modules.dao.FilesQiniuAccountDao;
 import hcloud.files.qiniu.modules.model.dto.QiNiuAccountDto;
 import hcloud.files.qiniu.modules.model.entity.FilesQiniuAccount;
+import hcloud.files.qiniu.modules.model.entity.FsQiniuAccount;
 import hcloud.files.qiniu.modules.service.FileUploadService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +43,10 @@ public class FileUploadServiceImpl implements FileUploadService {
     @Override
     public String upload(MultipartFile file) throws IOException {
         String obj = "";
-        List<FilesQiniuAccount> accountList = filesQiniuAccountDao.selectAll();
+        List<FsQiniuAccount> accountList = filesQiniuAccountDao.selectAll();
         QiNiuAccountDto accountDto = null;
         if (!CollectionUtils.isEmpty(accountList)) {
-            FilesQiniuAccount account = accountList.get(0);
+            FsQiniuAccount account = accountList.get(0);
             accountDto = new QiNiuAccountDto();
             BeanUtils.copyProperties(account, accountDto);
         } else {
@@ -55,8 +56,8 @@ public class FileUploadServiceImpl implements FileUploadService {
         String filePath = "";
         String fileName = originalFilename;
         DateUtil.getSecondTimestamp(new Date());
-        String accessKey = accountDto.getAccesskey();
-        String secretKey = accountDto.getSecretkey();
+        String accessKey = accountDto.getAccesskeyid();
+        String secretKey = accountDto.getAccesskeysecret();
         String bucket = accountDto.getBucketname();
 //        String key = "file key";
         Auth auth = Auth.create(accessKey, secretKey);
